@@ -1,0 +1,16 @@
+syntax: glob
+
+*.RData
+*.Rout
+*.swp
+*.dvi
+*.ppt
+*.aux
+*.pdf
+*.log
+*.bbl
+*.blg
+*.nav
+*.out
+*.snm
+*.toc
