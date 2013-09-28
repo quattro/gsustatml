@@ -1,11 +1,13 @@
 \documentclass[12pt]{article}
 \usepackage[left=72pt, right=72pt, top=72pt, bottom=72pt]{geometry}
+\usepackage{enumerate}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
 
 \newcommand{\bigpr}[1]{\Pr\Big[#1\Big]}
+\newcommand{\bayes}[2]{\frac{\Pr[#1|#2] \cdot \Pr[#2]}{\Pr[#1]}}
 
 \begin{document}
 \begin{center}
@@ -13,6 +15,18 @@
 \today
 \end{center}
 \section*{Exercise 2.1}
+For this problem let $G_1, G_2$ be the binary indicator variables that child 1 or 2
+is a girl (we dont need boy indicators as it would be just $1 - G_i$).
+\begin{enumerate}[a)]
+    \item
+        \begin{align*}
+            \Pr[G_1 + G_2 = 1| G_1 + G_2 < 2] &= \bayes{G_1 + G_2 < 2}{G_1 + G_2 = 1}\\
+            &= \frac{1 \cdot 1/2}{3/4} = \frac{2}{3}.
+        \end{align*}
+    \item
+        This follows due to independence.
+        \[\Pr[G_1 = 1|1 - G_2] = \Pr[G_1 = 1] = 1/2.\]
+\end{enumerate}
 \section*{Exercise 2.2}
 \section*{Exercise 2.17}
 \end{document}
