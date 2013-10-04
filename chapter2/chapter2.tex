@@ -7,7 +7,9 @@
 \usepackage{amsthm}
 
 \newcommand{\bigpr}[1]{\Pr\Big[#1\Big]}
-\newcommand{\bayes}[2]{\frac{\Pr[#1|#2] \cdot \Pr[#2]}{\Pr[#1]}}
+\newcommand{\bayes}[2]{\frac{\Pr[#2|#1] \cdot \Pr[#1]}{\Pr[#2]}}
+\newcommand{\KL}[2]{\mathbb{KL}(#1||#2)}
+\renewcommand{\H}{\mathbb{H}}
 
 \begin{document}
 \begin{center}
@@ -20,13 +22,81 @@ is a girl (we dont need boy indicators as it would be just $1 - X_i$).
 \begin{enumerate}[a)]
     \item
         \begin{align*}
-            \Pr[X_1 + X_2 = 1| X_1 + X_2 < 2] &= \bayes{X_1 + X_2 < 2}{X_1 + X_2 = 1}\\
+            \Pr[X_1 + X_2 = 1| X_1 + X_2 < 2] &= \bayes{X_1 + X_2 = 1}{X_1 + X_2 < 2}\\
             &= \frac{1 \cdot 1/2}{3/4} = \frac{2}{3}.
         \end{align*}
     \item
         This follows due to independence.
-        \[\Pr[X_1 = 1|1 - X_2] = \Pr[X_1 = 1] = 1/2.\]
+        \[\Pr[X_1 = 1|X_2 = 0] = \Pr[X_1 = 1] = 1/2.\]
 \end{enumerate}
 \section*{Exercise 2.2}
+\begin{enumerate}[a)]
+    \item 
+    \item
+        The defender's reasoning is that $\Pr[G|E]$ is very small $(1/N_b)$, so
+        $E$ is irrelevant. It is wrong: although $P[G|E]$ is small, $E$ can
+        significantly contribute to determine who the real guilty one is. 
+        e.g., Let's say there is another evidence $E_c$
+
+        \begin{description}
+            \item[$E_c$] the real criminal has black hairs. 
+            \item[$N_c$] the number of ppl who have black hair.
+            \item[$N'$] the number of ppl who have both black hair and found blood type.
+            \item[$G$] the defendant that has the blood and black hair is guilty
+        \end{description}
+        \[\Pr[G|E, E_c] = \frac{\Pr[E, E_c|G] \cdot \Pr[G]}{\Pr[E, E_c]} = 1/N'.\]
+        $N_b$ could be large (e.g. 8000), $N_c$ could be large (e.g. 500); however,
+        $N'$ could be very small (e.g. 20).  As a result, $E$ is not irrelevant, $E$
+        is very important. Considering E as irrelevant is the Defenders' Fallacy.
+\end{enumerate}
+\section*{Exercise 2.6}
+\begin{enumerate}[a)]
+    \item ii. is the required set. That is \[\Pr[H|e_1, e_2] = \bayes{H}{e_1, e_2}.\]
+    \item i. is the required set. That is
+        \[\Pr[H|e_1, e_2] = \frac{\Pr[e_1|H] \cdot \Pr[e_2|H] \cdot \Pr[H]}{\Pr[e_1, e_2]}.\]
+\end{enumerate}
+\section*{Exercise 2.9}
+\begin{enumerate}[a)]
+    \item 
+        \begin{proof}
+        \begin{align*}
+            \Pr[X,Y,W|Z] &= \Pr[X|Z] \cdot \Pr[Y,W|Z]\\
+            \sum_W \Pr[X,Y,W|Z] &= \sum_W \Pr[X|Z] \cdot \Pr[Y,W|Z]\\
+            \Pr[X,Y|Z] &= \Pr[X|Z] \cdot \Pr[Y|Z]\\
+        \end{align*}
+        Or?
+        \begin{align*}
+            \Pr[X,W|Z,Y] &= \Pr[X|Z] \cdot \Pr[W,Y|Z]\\
+            \sum_W \Pr[X,W|Z,Y] &= \sum_W \Pr[X|Z] \cdot \Pr[W,Y|Z]\\
+            \Pr[X|Z,Y] &= \Pr[X|Z] \cdot \Pr[Y|Z] = \Pr[X,Y|Z]
+        \end{align*}
+        \end{proof}
+    \item
+        \begin{proof}
+            \begin{align*}
+            \Pr[X,Y|Z] = \Pr[X|Z] \cdot \Pr[Y|Z]\\
+            \end{align*}
+        \end{proof}
+
+\end{enumerate}
+\section*{Exercise 2.15}
+\begin{proof}
+    Let \[p_{\text{emp}}(x) = p(x) = \frac{N_x}{|\chi|}\] be the empircal
+    distribution where $\chi$ is the domain and $N_x$ is the multiplicity of
+    $x$ in $\chi$. Let $X$ be a random variable over $\chi$. By definition,
+    \begin{align*}
+        0 \leq \KL{p}{q} &= \sum_{x \in \chi} p(x) \log \frac{p(x)}{q(x)}\\
+        &= \sum_{x \in \chi} p(x) \log p(x) - \sum_{x \in \chi} p(x) \log q(x)\\
+    \end{align*}
+    So we would like to maximize this term,
+    \[\sum_{x \in \chi} p(x) \log q(x).\]
+    Again, by definition we have,
+    \begin{align*}
+    \sum_{x \in \chi} p(x) \log q(x) &= \sum_{x \in \chi} \frac{N_x}{|\chi|} \log q(x)\\
+    1/|\chi| \cdot \sum_{x \in \chi} N_x \log q(x) &= 1/|\chi| \cdot \log \left(
+        \prod_{x \in \chi} q(x)^{N_x} \right)
+    \end{align*}
+\end{proof}
+
 \section*{Exercise 2.17}
 \end{document}
