@@ -72,7 +72,10 @@ Kind of a sketch, but good enough.
         &= \sum_{x \in \chi} p(x) \log p(x) - \sum_{x \in \chi} p(x) \log q(x)\\
     \end{align*}
     So we would like to maximize this term,
-    \[\sum_{x \in \chi} p(x) \log q(x).\]
+    \begin{align}
+        \label{eq:maxterm}
+        \sum_{x \in \chi} p(x) \log q(x).
+    \end{align}
     Again, by definition we have,
     \begin{align*}
     \sum_{x \in \chi} p(x) \log q(x) &= \sum_{x \in \chi} \frac{N_x}{|\chi|} \log q(x)\\
@@ -80,7 +83,7 @@ Kind of a sketch, but good enough.
         \prod_{x \in \chi} q(x)^{N_x} \right)
     \end{align*}
     The product is exactly the multinomial distribution whose upper bound is at
-    the MLE. As log is monotonic, this term is maximized at MLE.
+    the MLE. As log is monotonic, term \ref{eq:maxterm} is maximized at MLE.
 \end{proof}
 
 \section*{Exercise 2.17}
