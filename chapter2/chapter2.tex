@@ -57,29 +57,12 @@ is a girl (we dont need boy indicators as it would be just $1 - X_i$).
 \end{enumerate}
 \section*{Exercise 2.9}
 \begin{enumerate}[a)]
-    \item 
-        \begin{proof}
-        \begin{align*}
-            \Pr[X,Y,W|Z] &= \Pr[X|Z] \cdot \Pr[Y,W|Z]\\
-            \sum_W \Pr[X,Y,W|Z] &= \sum_W \Pr[X|Z] \cdot \Pr[Y,W|Z]\\
-            \Pr[X,Y|Z] &= \Pr[X|Z] \cdot \Pr[Y|Z]\\
-        \end{align*}
-        Or?
-        \begin{align*}
-            \Pr[X,W|Z,Y] &= \Pr[X|Z] \cdot \Pr[W,Y|Z]\\
-            \sum_W \Pr[X,W|Z,Y] &= \sum_W \Pr[X|Z] \cdot \Pr[W,Y|Z]\\
-            \Pr[X|Z,Y] &= \Pr[X|Z] \cdot \Pr[Y|Z] = \Pr[X,Y|Z]
-        \end{align*}
-        \end{proof}
-    \item
-        \begin{proof}
-            \begin{align*}
-            \Pr[X,Y|Z] = \Pr[X|Z] \cdot \Pr[Y|Z]\\
-            \end{align*}
-        \end{proof}
-
+    \item Not sure.
+    \item You can easily draw a graphical model to confirm this, but that is
+        not a proof in of itself\dots
 \end{enumerate}
 \section*{Exercise 2.15}
+Kind of a sketch, but good enough.
 \begin{proof}
     Let \[p_{\text{emp}}(x) = p(x) = \frac{N_x}{|\chi|}\] be the empircal
     distribution where $\chi$ is the domain and $N_x$ is the multiplicity of
@@ -96,6 +79,8 @@ is a girl (we dont need boy indicators as it would be just $1 - X_i$).
     1/|\chi| \cdot \sum_{x \in \chi} N_x \log q(x) &= 1/|\chi| \cdot \log \left(
         \prod_{x \in \chi} q(x)^{N_x} \right)
     \end{align*}
+    The product is exactly the multinomial distribution whose upper bound is at
+    the MLE. As log is monotonic, this term is maximized at MLE.
 \end{proof}
 
 \section*{Exercise 2.17}
