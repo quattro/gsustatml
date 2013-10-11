@@ -1,0 +1,36 @@
+\documentclass[12pt]{article}
+\usepackage[left=72pt, right=72pt, top=72pt, bottom=72pt]{geometry}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newcommand{\bigpr}[1]{\Pr\Big[#1\Big]}
+\newcommand{\bayes}[2]{\frac{\Pr[#2|#1] \cdot \Pr[#1]}{\Pr[#2]}}
+\newcommand{\KL}[2]{\mathbb{KL}(#1||#2)}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\D}{\mathcal{D}}
+
+\begin{document}
+\begin{center}
+{\Large Chapter 3}\\
+\today
+\end{center}
+\section*{Exercise 3.1}
+\begin{proof}
+Taking logs of equation 3.11 gives
+\[\ell(\theta) = \log \Pr[\D|\theta] = \log\left(\theta^{N_1}(1 - \theta)^{N_0} \right) = N_1 \log \theta + N_0 \log (1 - \theta).\] 
+Taking the derivative we get,
+\[\frac{d \ell}{d \theta} = \frac{N_1}{\theta} + \frac{N_0}{1 - \theta}.\]
+Setting equal to zero and solving we finally see (remember $N = N_1 + N_0$),
+\begin{align*}
+    \frac{N_1}{\theta} + \frac{N_0}{1 - \theta} &= 0\\
+    N_1 (1 - \theta) + N_0 \theta &= N_1 - \theta(N_1 + N_0)\\
+    &= N_1 - N\theta.\\
+    \iff \theta = \frac{N_1}{N}.
+\end{align*}
+\end{proof}
+\section*{Exercise 3.9}
+\section*{Exercise 3.13}
+\end{document}
