@@ -22,11 +22,11 @@
 Taking logs of equation 3.11 gives
 \[\ell(\theta) = \log \Pr[\D|\theta] = \log\left(\theta^{N_1}(1 - \theta)^{N_0} \right) = N_1 \log \theta + N_0 \log (1 - \theta).\] 
 Taking the derivative we get,
-\[\frac{d \ell}{d \theta} = \frac{N_1}{\theta} + \frac{N_0}{1 - \theta}.\]
+\[\frac{d \ell}{d \theta} = \frac{N_1}{\theta} - \frac{N_0}{1 - \theta}.\]
 Setting equal to zero and solving we finally see (remember $N = N_1 + N_0$),
 \begin{align*}
-    \frac{N_1}{\theta} + \frac{N_0}{1 - \theta} &= 0\\
-    N_1 (1 - \theta) + N_0 \theta &= N_1 - \theta(N_1 + N_0)\\
+    \frac{N_1}{\theta} - \frac{N_0}{1 - \theta} &= 0\\
+    N_1 (1 - \theta) - N_0 \theta &= N_1 - \theta(N_1 + N_0)\\
     &= N_1 - N\theta.\\
     \iff \theta = \frac{N_1}{N}.
 \end{align*}
