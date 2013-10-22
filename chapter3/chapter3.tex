@@ -53,5 +53,24 @@ As $m = \max (\D, b)$ we have that $m \geq b$. Therefore we consider two cases:
 \end{description}
 In both cases we get the same result, therefore we have
 $\Pr[\theta|\D] = \text{Pareto}[\theta| N + K, m]$.  \end{proof}
+\section*{Exercise 3.11}
+\begin{proof}
+Likelihood of a single lifetime variable is defined as $\Pr[x | \theta] = \theta e^{-\theta x}.$
+We are give data $\D = \{x_i\}_i^n$, so the data-likelihood is (due to
+independence of machine lifetimes)
+\[\Pr[\D|\theta] = \Pr[x_1, \dotsc, x_n|\theta] = \prod_{i=1}^n \Pr[x_i | \theta] =
+    \theta^n \exp(-\theta \sum_{i=1}^n x_i).\]
+Taking the derivative of this function we have
+\[\Pr[\D|\theta]' = n \theta^{n - 1}\exp(-\theta \sum_{i=1}^n x_i)
+    - \theta^n \exp(-\theta \sum_{i=1}^n x_i) \sum_{i=1}^n x_i.\]
+Setting this equal to 0 and solving for $\theta$ we see,
+\begin{align*}
+    n \theta^{n - 1}\exp(-\theta \sum_{i=1}^n x_i) = 
+        \theta^n \exp(-\theta \sum_{i=1}^n x_i) \sum_{i=1}^n x_i \iff\\
+    n = \theta \sum_{i=1}^n x_i \iff \theta =
+        \frac{n}{\sum_{i=1}^n x_i} = \frac{1}{1/n \sum_{i=1}^n x_i} = \frac{1}{\bar{x}}.
+\end{align*}
+Therefore the MLE $\hat{\theta}$ for $\Pr[\D|\theta]$ is $1/\bar{x}.$
+\end{proof}
 \section*{Exercise 3.13}
 \end{document}
