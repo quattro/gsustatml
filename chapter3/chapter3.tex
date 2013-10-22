@@ -9,6 +9,7 @@
 \newcommand{\bigpr}[1]{\Pr\Big[#1\Big]}
 \newcommand{\bayes}[2]{\frac{\Pr[#2|#1] \cdot \Pr[#1]}{\Pr[#2]}}
 \newcommand{\KL}[2]{\mathbb{KL}(#1||#2)}
+\newcommand{\I}{\mathbb{I}}
 \renewcommand{\H}{\mathbb{H}}
 \newcommand{\D}{\mathcal{D}}
 
@@ -32,5 +33,25 @@ Setting equal to zero and solving we finally see (remember $N = N_1 + N_0$),
 \end{align*}
 \end{proof}
 \section*{Exercise 3.9}
+\begin{proof}
+By definition we have $\Pr[\theta | \D]  = \Pr[\D, \theta] / \Pr[\D]$.
+As $m = \max (\D, b)$ we have that $m \geq b$. Therefore we consider two cases:
+\begin{description}
+    \item[case 1: $m = b$]
+        \begin{align*}
+            \frac{Kb^K}{\theta^{N + K + 1}} \cdot \left(\frac{K}{(N + K)b^N}\right)^{-1} \I[\theta \geq m]
+            = \frac{b^{K + N}(N+K)}{\theta^{N + K + 1}} \I[\theta \geq m]\\
+            = \frac{m^{K + N}(N+K)}{\theta^{N + K + 1}} \I[\theta \geq m]
+            = \text{Pareto}[\theta | N + K, m]
+        \end{align*}
+    \item[case 2: $m > b$]
+        \begin{align*}
+            \frac{Kb^K}{\theta^{N + K + 1}} \cdot \left(\frac{Kb^K}{(N + K)m^N}\right)^{-1} \I[\theta \geq m]
+            = \frac{m^{K + N}(N+K)}{\theta^{N + K + 1}} \I[\theta \geq m]\\
+            = \text{Pareto}[\theta | N + K, m]
+        \end{align*}
+\end{description}
+In both cases we get the same result, therefore we have
+$\Pr[\theta|\D] = \text{Pareto}[\theta| N + K, m]$.  \end{proof}
 \section*{Exercise 3.13}
 \end{document}
